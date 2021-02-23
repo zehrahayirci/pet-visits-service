@@ -1,5 +1,7 @@
 package visits.application;
 import org.springframework.beans.factory.annotation.Autowired;
+import visits.domain.Visit;
+import visits.domain.VisitRepository;
 import visits.infrastructure.data.VisitEntity;
 import visits.infrastructure.data.VisitEntitySpringRepository;
 
@@ -8,14 +10,13 @@ import visits.infrastructure.data.VisitEntitySpringRepository;
  */
 public class SubmitVisitService {
 
-    @Autowired
-    private VisitEntitySpringRepository visitEntitySpringRepository;
+    private VisitRepository visitRepository;
 
-    public SubmitVisitService(VisitEntitySpringRepository visitEntitySpringRepository){
-        this.visitEntitySpringRepository = visitEntitySpringRepository;
+    public SubmitVisitService(VisitRepository visitRepository){
+        this.visitRepository = visitRepository;
     }
 
-    public VisitEntity SaveVisit(VisitEntity visitEntity){
-        return this.visitEntitySpringRepository.save(visitEntity);
+    public Visit SaveVisit(Visit visit){
+        return this.visitRepository.save(visit);
     }
 }
