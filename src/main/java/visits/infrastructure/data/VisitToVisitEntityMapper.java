@@ -1,7 +1,9 @@
 package visits.infrastructure.data;
 
+import org.springframework.stereotype.Component;
 import visits.domain.Visit;
 
+@Component
 public class VisitToVisitEntityMapper {
 
     public Visit mapToVisit(VisitEntity visitEntity){
