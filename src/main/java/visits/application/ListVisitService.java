@@ -1,5 +1,6 @@
 package visits.application;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import visits.Visit;
 import visits.VisitRepository;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 public class ListVisitService {
 
+    @Autowired
     private VisitRepository visitRepository;
 
     public ListVisitService(VisitRepository visitRepository){

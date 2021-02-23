@@ -1,4 +1,5 @@
 package visits.application;
+import org.springframework.beans.factory.annotation.Autowired;
 import visits.OwnerVisitPost;
 import visits.Visit;
 import visits.VisitRepository;
@@ -9,14 +10,14 @@ import visits.VisitStatus;
  */
 public class SubmitVisitService {
 
+    @Autowired
     private VisitRepository visitRepository;
 
     public SubmitVisitService(VisitRepository visitRepository){
         this.visitRepository = visitRepository;
     }
 
-    public void SaveVisit(Visit visit){
-        this.visitRepository.save(visit);
-
+    public Visit SaveVisit(Visit visit){
+        return this.visitRepository.save(visit);
     }
 }
