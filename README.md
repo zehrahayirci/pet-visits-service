@@ -3,7 +3,7 @@
 This repository contains a very simple application 
 that provides a REST interface.
 It lets pet owners submit and list visits and vets accept and reject visits.
-All visit information are stored in a (in-memory) database.
+All visitEntity information are stored in a (in-memory) database.
 
 We use this project as a starting point 
 to create and refactor to a Clean-/Onion-style Architecture.

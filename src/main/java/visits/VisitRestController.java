@@ -5,6 +5,8 @@ import visits.application.SubmitVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import visits.domain.VisitStatus;
+import visits.infrastructure.database.VisitEntity;
 
 import java.util.List;
 
@@ -20,41 +22,41 @@ public class VisitRestController {
     private SubmitVisitService submitVisitService;
 
     @GetMapping(path = "/owners/{ownerId}/visits")
-    public ResponseEntity<List<Visit>> getVisits(
+    public ResponseEntity<List<VisitEntity>> getVisits(
             @PathVariable("ownerId") int ownerId) {
         return ResponseEntity.ok(listVisitService.ListbyOwner(ownerId));
     }
 
     @PostMapping(path = "/owners/{ownerId}/visits/submit")
-    public ResponseEntity<Visit> submitVisit(
+    public ResponseEntity<VisitEntity> submitVisit(
             @PathVariable("ownerId") int ownerId,
             @RequestBody OwnerVisitPost ownerVisitView) {
-        Visit visit = OwnerVisitPost.toVisit(ownerVisitView, ownerId, VisitStatus.PENDING);
-        return ResponseEntity.ok(submitVisitService.SaveVisit(visit));
+        VisitEntity visitEntity = OwnerVisitPost.toVisit(ownerVisitView, ownerId, VisitStatus.PENDING);
+        return ResponseEntity.ok(submitVisitService.SaveVisit(visitEntity));
     }
 
     @PostMapping(path = "/vets/{vetId}/visits/{visitId}/approve")
-    public ResponseEntity<Visit> approveVisit(
+    public ResponseEntity<VisitEntity> approveVisit(
             @PathVariable("vetId") int vetId,
             @PathVariable("visitId") int visitId) {
-        Visit visit = listVisitService.ListbyId(visitId);
-        if (visit.getVetId() != vetId) {
-            return ResponseEntity.badRequest().body(visit);
+        VisitEntity visitEntity = listVisitService.ListbyId(visitId);
+        if (visitEntity.getVetId() != vetId) {
+            return ResponseEntity.badRequest().body(visitEntity);
         }
-        visit.setStatus(VisitStatus.APPROVED);
-        return ResponseEntity.ok(submitVisitService.SaveVisit(visit));
+        visitEntity.setStatus(VisitStatus.APPROVED);
+        return ResponseEntity.ok(submitVisitService.SaveVisit(visitEntity));
     }
 
     @PostMapping(path = "/vets/{vetId}/visits/{visitId}/reject")
-    public ResponseEntity<Visit> rejectVisit(
+    public ResponseEntity<VisitEntity> rejectVisit(
             @PathVariable("vetId") int vetId,
             @PathVariable("visitId") int visitId) {
-        Visit visit = listVisitService.ListbyId(visitId);
-        if (visit.getVetId() != vetId) {
-            return ResponseEntity.badRequest().body(visit);
+        VisitEntity visitEntity = listVisitService.ListbyId(visitId);
+        if (visitEntity.getVetId() != vetId) {
+            return ResponseEntity.badRequest().body(visitEntity);
         }
-        visit.setStatus(VisitStatus.REJECTED);
-        return ResponseEntity.ok(submitVisitService.SaveVisit(visit));
+        visitEntity.setStatus(VisitStatus.REJECTED);
+        return ResponseEntity.ok(submitVisitService.SaveVisit(visitEntity));
     }
 
 }

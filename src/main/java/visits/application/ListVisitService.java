@@ -1,8 +1,8 @@
 package visits.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import visits.Visit;
-import visits.VisitRepository;
+import visits.infrastructure.database.VisitEntity;
+import visits.infrastructure.database.VisitEntitySpringRepository;
 
 import java.util.List;
 
@@ -12,19 +12,19 @@ import java.util.List;
 public class ListVisitService {
 
     @Autowired
-    private VisitRepository visitRepository;
+    private VisitEntitySpringRepository visitEntitySpringRepository;
 
-    public ListVisitService(VisitRepository visitRepository){
-        this.visitRepository = visitRepository;
+    public ListVisitService(VisitEntitySpringRepository visitEntitySpringRepository){
+        this.visitEntitySpringRepository = visitEntitySpringRepository;
     }
 
-    public List<Visit> ListbyOwner(int ownerId){
-        return visitRepository.findAllByOwnerId(ownerId);
+    public List<VisitEntity> ListbyOwner(int ownerId){
+        return visitEntitySpringRepository.findAllByOwnerId(ownerId);
 
     }
 
-    public Visit ListbyId(int visitId){
-        return visitRepository.findById(visitId);
+    public VisitEntity ListbyId(int visitId){
+        return visitEntitySpringRepository.findById(visitId);
 
     }
 }

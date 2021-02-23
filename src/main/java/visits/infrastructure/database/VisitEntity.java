@@ -1,18 +1,34 @@
-package visits.domain;
+package visits.infrastructure.database;
 
+import visits.domain.VisitStatus;
 
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 
-public class Visit {
+@Entity(name = "VISIT_ENTITY")
+public class VisitEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "owner_id")
     private int ownerId;
+
+    @Column(name = "pet_id")
     private int petId;
+
+    @Column(name = "visit_date")
     private ZonedDateTime date;
+
+    @Column(name = "vet_id")
     private int vetId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 8, name = "status")
     private VisitStatus status;
 
-    public Visit() {
+    public VisitEntity() {
     }
 
     public Integer getId() {
@@ -74,7 +90,7 @@ public class Visit {
         private Builder() {
         }
 
-        public static Builder aVisit() {
+        public static Builder aVisitEntity() {
             return new Builder();
         }
 
@@ -108,15 +124,15 @@ public class Visit {
             return this;
         }
 
-        public Visit build() {
-            Visit visit = new Visit();
-            visit.id = this.id;
-            visit.ownerId = this.ownerId;
-            visit.petId = this.petId;
-            visit.date = this.date;
-            visit.vetId = this.vetId;
-            visit.status = this.status;
-            return visit;
+        public VisitEntity build() {
+            VisitEntity visitEntity = new VisitEntity();
+            visitEntity.id = this.id;
+            visitEntity.ownerId = this.ownerId;
+            visitEntity.petId = this.petId;
+            visitEntity.date = this.date;
+            visitEntity.vetId = this.vetId;
+            visitEntity.status = this.status;
+            return visitEntity;
         }
     }
 

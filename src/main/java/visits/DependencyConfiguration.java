@@ -5,20 +5,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import visits.application.ListVisitService;
 import visits.application.SubmitVisitService;
+import visits.infrastructure.database.VisitEntitySpringRepository;
 
 @Configuration
 public class DependencyConfiguration {
 
     @Autowired
-    VisitRepository visitRepository;
+    VisitEntitySpringRepository visitEntitySpringRepository;
 
     @Bean
     public ListVisitService listVisitService(){
-        return new ListVisitService(visitRepository);
+        return new ListVisitService(visitEntitySpringRepository);
     }
 
     @Bean
     public SubmitVisitService submitVisitService(){
-        return new SubmitVisitService(visitRepository);
+        return new SubmitVisitService(visitEntitySpringRepository);
     }
 }
