@@ -1,9 +1,7 @@
 package visits.application;
 import org.springframework.beans.factory.annotation.Autowired;
-import visits.OwnerVisitPost;
-import visits.Visit;
-import visits.VisitRepository;
-import visits.VisitStatus;
+import visits.infrastructure.data.VisitEntity;
+import visits.infrastructure.data.VisitEntitySpringRepository;
 
 /**
  * Created by zehra on 2/23/21.
@@ -11,13 +9,13 @@ import visits.VisitStatus;
 public class SubmitVisitService {
 
     @Autowired
-    private VisitRepository visitRepository;
+    private VisitEntitySpringRepository visitEntitySpringRepository;
 
-    public SubmitVisitService(VisitRepository visitRepository){
-        this.visitRepository = visitRepository;
+    public SubmitVisitService(VisitEntitySpringRepository visitEntitySpringRepository){
+        this.visitEntitySpringRepository = visitEntitySpringRepository;
     }
 
-    public Visit SaveVisit(Visit visit){
-        return this.visitRepository.save(visit);
+    public VisitEntity SaveVisit(VisitEntity visitEntity){
+        return this.visitEntitySpringRepository.save(visitEntity);
     }
 }

@@ -1,5 +1,8 @@
 package visits;
 
+import visits.domain.VisitStatus;
+import visits.infrastructure.data.VisitEntity;
+
 import java.time.ZonedDateTime;
 
 public class OwnerVisitPost {
@@ -17,14 +20,14 @@ public class OwnerVisitPost {
         this.vetId = vetId;
     }
 
-    public static Visit toVisit(OwnerVisitPost ownerVisitPost, int ownerId, VisitStatus status) {
-        Visit visit = new Visit();
-        visit.setPetId(ownerVisitPost.getPetId());
-        visit.setDate(ownerVisitPost.getDate());
-        visit.setVetId(ownerVisitPost.getVetId());
-        visit.setOwnerId(ownerId);
-        visit.setStatus(status);
-        return visit;
+    public static VisitEntity toVisit(OwnerVisitPost ownerVisitPost, int ownerId, VisitStatus status) {
+        VisitEntity visitEntity = new VisitEntity();
+        visitEntity.setPetId(ownerVisitPost.getPetId());
+        visitEntity.setDate(ownerVisitPost.getDate());
+        visitEntity.setVetId(ownerVisitPost.getVetId());
+        visitEntity.setOwnerId(ownerId);
+        visitEntity.setStatus(status);
+        return visitEntity;
     }
 
     public int getPetId() {
