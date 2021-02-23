@@ -1,4 +1,4 @@
-package visits.infrastructure.database;
+package visits.infrastructure.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import visits.domain.Visit;

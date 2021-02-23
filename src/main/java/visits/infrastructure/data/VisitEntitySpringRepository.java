@@ -1,4 +1,4 @@
-package visits.infrastructure.database;
+package visits.infrastructure.data;
 
 import org.springframework.data.repository.Repository;
 

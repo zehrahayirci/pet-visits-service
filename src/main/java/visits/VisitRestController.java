@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import visits.domain.VisitStatus;
-import visits.infrastructure.database.VisitEntity;
+import visits.infrastructure.data.VisitEntity;
 
 import java.util.List;
 

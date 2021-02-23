@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import visits.application.ListVisitService;
 import visits.application.SubmitVisitService;
-import visits.infrastructure.database.VisitEntitySpringRepository;
+import visits.infrastructure.data.VisitEntitySpringRepository;
 
 @Configuration
 public class DependencyConfiguration {

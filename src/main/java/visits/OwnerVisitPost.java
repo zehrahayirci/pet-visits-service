@@ -1,7 +1,7 @@
 package visits;
 
 import visits.domain.VisitStatus;
-import visits.infrastructure.database.VisitEntity;
+import visits.infrastructure.data.VisitEntity;
 
 import java.time.ZonedDateTime;
 

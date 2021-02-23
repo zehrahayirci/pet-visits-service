@@ -1,7 +1,7 @@
 package visits.application;
 import org.springframework.beans.factory.annotation.Autowired;
-import visits.infrastructure.database.VisitEntity;
-import visits.infrastructure.database.VisitEntitySpringRepository;
+import visits.infrastructure.data.VisitEntity;
+import visits.infrastructure.data.VisitEntitySpringRepository;
 
 /**
  * Created by zehra on 2/23/21.
